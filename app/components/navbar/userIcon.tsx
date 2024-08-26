@@ -1,10 +1,18 @@
 import React from 'react'
+import { LuUser2 } from 'react-icons/lu'
+import { currentUser,auth } from '@clerk/nextjs/server'
 
-const UserIcon = () => {
+const UserIcon = async() => {
+
+
+  const {userId} = auth();  
+  const user = await currentUser()
+  const profile = user?.imageUrl;
+  if(profile){
+    return <img src={profile} className='w-6 h-6 rounded-full object-cover'/>
+  }
   return (
-    <div>
-      UserIcon
-    </div>
+    <LuUser2 className='w-6 h-6 bg-primary rounded-full text-white'/>
   )
 }
 
