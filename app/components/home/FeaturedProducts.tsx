@@ -1,4 +1,4 @@
-import { fetchFeaturedProducts } from '@/utils/actions'
+import { fetchFeaturedProducts } from '../../../utils/actions'
 import React from 'react'
 import EmptyList from '../global/EmptyList'
 import SectionTitle from '../global/SectionTitle'

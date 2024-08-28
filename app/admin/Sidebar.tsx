@@ -1,8 +1,13 @@
+'use client'
 import React from 'react'
 import { adminLinks } from '../../utils/Links';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Button } from '@/components/ui/button';
+import { Button } from '@/app/components/ui/button';
+
+
+
+// HERE ALIGNMENT IS NOT WORKING
 
 const Sidebar = () => {
     const pathname = usePathname()
@@ -11,10 +16,10 @@ const Sidebar = () => {
     <aside>
         {adminLinks.map((link)=>{
             const isActivePage = pathname == link.href;
-            const variant = isActivePage?'secondary':'ghost';
-            return <Button asChild className='w-full mb-2 capitalize font-normal' variant={variant}>
+            const variant = isActivePage?'default':'ghost';
+            return <Button asChild className='w-full mb-2 capitalize font-normal justify-start ' variant={variant} key={link.href}>
 
-                    <Link key={link.href} href={link.href}>
+                    <Link  href={link.href} >
                        {link.label}
                     </Link>
             </Button>
@@ -25,3 +30,6 @@ const Sidebar = () => {
 }
 
 export default Sidebar
+
+
+
