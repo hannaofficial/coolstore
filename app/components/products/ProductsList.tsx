@@ -10,7 +10,7 @@ const ProductsList = ({products}:{products:Product[]}) => {
     <div className='mt-12 grid gap-y-8'>
       {products.map((product)=>{
         const {name, price, image, company} = product
-        const dollarsAmount = formatCurrency(price)
+        const rupeeAmount = formatCurrency(price)
         const productId = product.id
         return <article key={productId} className='group relative'>
           <Link href={`/products/${productId}`}>
@@ -25,7 +25,7 @@ const ProductsList = ({products}:{products:Product[]}) => {
                     <h4 className='text-muted-foreground'>{company}</h4>
                   </div>
                   <p className='text-muted-foreground text-lg md:ml-auto'>
-                    {dollarsAmount}
+                    {rupeeAmount}
                   </p>
 
               </CardContent>

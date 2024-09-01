@@ -1,14 +1,14 @@
-import { Label } from '@/app/components/ui/label';
-import { Button } from '@/app/components/ui/button';
-import { Input } from '@/app/components/ui/input';
 import {faker} from '@faker-js/faker'
 import FormInput from '@/app/form/FormInput';
+import FormContainer from '@/app/form/FormContainer';
+import { createProductAction } from '@/utils/actions';
+import ImageInput from '@/app/form/ImageInput';
+import { PriceInput } from '@/app/form/PriceInput';
+import TextAreaInput from '@/app/form/TextAreaInput';
+import CheckboxInput from '@/app/form/Checkboxinput';
+import { SubmitButton } from '@/app/form/Button';
 
-const createProductAction = async(formData: FormData)=>{
-  'use server'
-  const name = formData.get('name') as string
-  console.log(name)
-}
+
 
 const CreateProductPage = () => {
   
@@ -20,12 +20,19 @@ const CreateProductPage = () => {
     <section>
       <h1 className="text-2xl font-semibold mb-8 capitalize">create product</h1>
       <div className='border p-8 rounded-md'>
-        <form action={createProductAction}>
-          <FormInput type='text' name='name' label='product-name' defaultValue={name}/>
-          <Button>
-            Submit
-          </Button>
-        </form>
+        <FormContainer action={createProductAction}>
+            <div className='grid gap-4 md:grid-cols-2 my-4'>
+              <FormInput type='text' name='name' label='product name' defaultValue={name}/>
+              <FormInput type='text' name='company' label='company' defaultValue={company}/>
+              <PriceInput/>
+              <ImageInput/>
+            </div>
+            <TextAreaInput name='description' labelText='product description' defaultValue={description}/>
+            <div className='mt-8'>
+              <CheckboxInput name='featured' label='featured'/>
+            </div>
+            <SubmitButton text='create product' className='mt-8'/>
+        </FormContainer>
 
       </div>
     </section>

@@ -12,7 +12,7 @@ const ProductsGrid = ({products}:{products:Product[]}) => {
       {
           products.map((product)=>{
             const {name,id, price, image}  = product
-            const dollarsAmount = formatCurrency(price)
+            const rupeeAmount = formatCurrency(price)
             return <article key={id} className='group relative'>
                 <Link href={`/products/${id}`}>
                 
@@ -26,7 +26,7 @@ const ProductsGrid = ({products}:{products:Product[]}) => {
                         </div>
                         <div className='mt-4 text-center'>
                           <h2 className='text-lg capitalize'>{name}</h2>
-                          <p className='text-muted-foreground mt-2'>{dollarsAmount}</p>
+                          <p className='text-muted-foreground mt-2'>{rupeeAmount}</p>
 
                         </div>
                       </CardContent>
